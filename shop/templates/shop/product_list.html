@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Store</title>
+</head>
+<body>
+    <nav style="margin-bottom: 20px;">
+        <a href="/admin" target="_blank">Go to admin</a>
+    </nav>
+    <h1>Welcome to My Store</h1>
+    <h2>Product List:</h2>
+    <ul>
+        {% for product in products %}
+            <li>
+                <a href="{% url 'product_detail' product.pk %}">
+                    <strong>{{ product.name }}</strong>
+                </a>
+                 - £{{ product.price }}
+                <p>{{ product.description }}</p>
+                <p>In Stock: {{ product.stock }}</p>
+            </li>
+        {% empty %}
+            <li>No products found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
